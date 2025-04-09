@@ -5,8 +5,32 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:publicTransportMadrid_Msus="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#time -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#time"/>
     
 
 
@@ -42,7 +66,7 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#performedByService">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Trip"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Service"/>
+        <rdfs:range rdf:resource="http://vocab.gtfs.org/terms#Service"/>
     </owl:ObjectProperty>
     
 
@@ -80,6 +104,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#arrivalTime">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#StopTime"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
     </owl:DatatypeProperty>
     
 
@@ -87,7 +112,8 @@
     <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#endService -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#endService">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Service"/>
+        <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     </owl:DatatypeProperty>
     
 
@@ -147,6 +173,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#serviceExceptionNotAvailableAt">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#serviceHasExceptionAt"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
         <owl:propertyDisjointWith rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#serviceExecptionAvailableAt"/>
     </owl:DatatypeProperty>
     
@@ -156,6 +183,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#serviceExecptionAvailableAt">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#serviceHasExceptionAt"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     </owl:DatatypeProperty>
     
 
@@ -169,7 +197,8 @@
     <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#startService -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#startService">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Service"/>
+        <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     </owl:DatatypeProperty>
     
 
@@ -182,6 +211,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://vocab.gtfs.org/terms#Service -->
+
+    <owl:Class rdf:about="http://vocab.gtfs.org/terms#Service"/>
     
 
 
@@ -271,12 +306,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Service -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Service"/>
-    
-
-
     <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Station -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Station">
@@ -293,7 +322,22 @@
 
     <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#StopTime -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#StopTime"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#StopTime">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#stopPerformedAt"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Stop"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#stopPerformedDuringTrip"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Trip"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
     
 
 
@@ -311,7 +355,7 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#performedByService"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Service"/>
+                <owl:onClass rdf:resource="http://vocab.gtfs.org/terms#Service"/>
             </owl:Restriction>
         </owl:equivalentClass>
     </owl:Class>
@@ -324,9 +368,9 @@
         <owl:equivalentClass>
             <owl:Class>
                 <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsNotPossible"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsPossible"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Unknown"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsNotWheelchairAccesible"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsWheelchairAccesible"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#wheelchairAccesibilityUnknown"/>
                 </owl:oneOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -346,28 +390,31 @@
     
 
 
-    <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsNotPossible -->
+    <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsNotWheelchairAccesible -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsNotPossible">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsNotWheelchairAccesible">
         <rdf:type rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#wheelchairAccesibilityStatus"/>
+        <publicTransportMadrid_Msus:hasName>Es accesible</publicTransportMadrid_Msus:hasName>
         <rdfs:comment>El viaje o parada no es accesible en silla de ruedas.</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsPossible -->
+    <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsWheelchairAccesible -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsPossible">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#IsWheelchairAccesible">
         <rdf:type rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#wheelchairAccesibilityStatus"/>
+        <publicTransportMadrid_Msus:hasName>No es accesible</publicTransportMadrid_Msus:hasName>
         <rdfs:comment>El viaje o parada es accesible en silla de ruedas.</rdfs:comment>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Unknown -->
+    <!-- http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#wheelchairAccesibilityUnknown -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Unknown">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#wheelchairAccesibilityUnknown">
         <rdf:type rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#wheelchairAccesibilityStatus"/>
+        <publicTransportMadrid_Msus:hasName>No se sabe</publicTransportMadrid_Msus:hasName>
         <rdfs:comment>No se sabe si es accesible en silla de ruedas.</rdfs:comment>
     </owl:NamedIndividual>
 </rdf:RDF>
