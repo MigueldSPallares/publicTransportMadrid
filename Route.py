@@ -8,7 +8,7 @@ if os.path.exists("D:/publicTransport/publicTransportMadrid_full.rdf"):
 else:
     ontology = get_ontology("D:/publicTransport/publicTransportMadrid.rdf").load()
 
-route_data = pd.read_csv("C:/Users/migue/Downloads/google_transit_M4/routes.txt")
+route_data = pd.read_csv("D:/publicTransport/data/google_transit_M4/routes.txt")
 
 def route_populate(data):
     for index, row in data.iterrows():
@@ -39,4 +39,4 @@ def route_populate(data):
       
 route_populate(route_data)
 
-ontology.save(file = "D:/publicTransportMadrid_full.rdf")
+ontology.save(file = "D:/publicTransport/publicTransportMadrid_full.rdf")
