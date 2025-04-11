@@ -11,7 +11,7 @@ else:
 
 namespace = get_namespace("http://vocab.gtfs.org/terms#")
 
-data_calendar = pd.read_csv("D:/publicTransport/data/google_transit_M4/agency.txt/calendar.txt")
+data_calendar = pd.read_csv("D:/publicTransport/data/google_transit_M4/calendar.txt")
 data_calendar_dates = pd.read_csv("D:/publicTransport/data/google_transit_M4/calendar_dates.txt")
 def number_to_date(date):
     int_to_string = str(date)
@@ -19,34 +19,36 @@ def number_to_date(date):
     result = datetime.strptime(string_date, '%Y-%m-%d').date()
     return result 
 
-
-for index, row in data_calendar.iterrows():
-    service = namespace.Service(("Service_" + str(row['service_id'])))
-    if(row["monday"] == 1):
-        service.isAvailableAtDay.append("Monday")
-    if(row["tuesday"] == 1):
-        service.isAvailableAtDay.append("Tuesday")
-    if(row["wednesday"] == 1):
-        service.isAvailableAtDay.append("Wednesday")
-    if(row["thursday"] == 1):
-        service.isAvailableAtDay.append("Thursday")
-    if(row["friday"] == 1):
-        service.isAvailableAtDay.append("Friday")
-    if(row["saturday"] == 1):
-        service.isAvailableAtDay.append("Saturday")
-    if(row["sunday"] == 1):
-        service.isAvailableAtDay.append("Sunday")
-    service.hasName.append(row['service_id'])
-    service.startService.append(number_to_date(row['start_date']))
-    service.endService.append(number_to_date(row['end_date']))
-for index, row in data_calendar_dates.iterrows():
-    for i in namespace.Service.instances():
-        if(row['service_id'] == i.hasName[0]):
-            
-            if(row['exception_type'] == 1):
-                i.serviceExecptionAvailableAt.append(number_to_date(row['date']))
+def service_populate(calendar_data, calendar_dates_data):
+    for index, row in calendar_data.iterrows():
+        service = namespace.Service(("Service_" + str(row['service_id'])))
+        if(row["monday"] == 1):
+            service.isAvailableAtDay.append("Monday")
+        if(row["tuesday"] == 1):
+            service.isAvailableAtDay.append("Tuesday")
+        if(row["wednesday"] == 1):
+            service.isAvailableAtDay.append("Wednesday")
+        if(row["thursday"] == 1):
+            service.isAvailableAtDay.append("Thursday")
+        if(row["friday"] == 1):
+            service.isAvailableAtDay.append("Friday")
+        if(row["saturday"] == 1):
+            service.isAvailableAtDay.append("Saturday")
+        if(row["sunday"] == 1):
+            service.isAvailableAtDay.append("Sunday")
+        service.hasName.append(row['service_id'])
+        service.startService.append(number_to_date(row['start_date']))
+        service.endService.append(number_to_date(row['end_date']))
+    for index, row in calendar_dates_data.iterrows():
+        for i in namespace.Service.instances():
+            if(row['service_id'] == i.hasName[0]):
                 
-            if(row['exception_type'] == 2):
-                i.serviceExceptionNotAvailableAt.append(number_to_date(row['date']))
+                if(row['exception_type'] == 1):
+                    i.serviceExecptionAvailableAt.append(number_to_date(row['date']))
+                    
+                if(row['exception_type'] == 2):
+                    i.serviceExceptionNotAvailableAt.append(number_to_date(row['date']))
+
+service_populate(data_calendar, data_calendar_dates)
 
 ontology.save(file = "D:/publicTransport/publicTransportMadrid_full.rdf")
