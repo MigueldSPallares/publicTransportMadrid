@@ -4,15 +4,15 @@ from datetime import datetime;
 import os;
 
 
-if os.path.exists("D:/publicTransportMadrid_full.rdf"):
-    ontology = get_ontology("D:/publicTransportMadrid_full.rdf").load()
+if os.path.exists("D:/publicTransport/publicTransportMadrid_full.rdf"):
+    ontology = get_ontology("D:/publicTransport/publicTransportMadrid_full.rdf").load()
 else:
-    ontology = get_ontology("D:/publicTransportMadrid.rdf").load()
+    ontology = get_ontology("D:/publicTransport/publicTransportMadrid.rdf").load()
 
 namespace = get_namespace("http://vocab.gtfs.org/terms#")
 
-data_calendar = pd.read_csv("C:/Users/migue/Downloads/google_transit_M4/calendar.txt")
-data_calendar_dates = pd.read_csv("C:/Users/migue/Downloads/google_transit_M4/calendar_dates.txt")
+data_calendar = pd.read_csv("D:/publicTransport/data/google_transit_M4/agency.txt/calendar.txt")
+data_calendar_dates = pd.read_csv("D:/publicTransport/data/google_transit_M4/calendar_dates.txt")
 def number_to_date(date):
     int_to_string = str(date)
     string_date = int_to_string[0:4] + "-" + int_to_string[4:6] + "-" + int_to_string[6:8]
@@ -49,4 +49,4 @@ for index, row in data_calendar_dates.iterrows():
             if(row['exception_type'] == 2):
                 i.serviceExceptionNotAvailableAt.append(number_to_date(row['date']))
 
-ontology.save(file = "D:/publicTransportMadrid_full.rdf")
+ontology.save(file = "D:/publicTransport/publicTransportMadrid_full.rdf")
