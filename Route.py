@@ -1,45 +1,41 @@
 from owlready2 import *;
 import pandas as pd;
+import os;
 
 
-ontology = get_ontology("D:/publicTransportMadrid.rdf").load()
+if os.path.exists("D:/publicTransportMadrid_full.rdf"):
+    ontology = get_ontology("D:/publicTransportMadrid_full.rdf").load()
+else:
+    ontology = get_ontology("D:/publicTransportMadrid.rdf").load()
 
 data = pd.read_csv("C:/Users/migue/Downloads/google_transit_M4/routes.txt")
 
-
-
 for index, row in data.iterrows():
-    if(row['route_id'][:3]== "4__"):
+    
+    if(row['route_id'][:2]== "4_"):
         newRoute = ontology.MetroRoute(row['route_id'])
         newRoute.hasName.append(row['route_long_name'])
         newRoute.hasUrl.append(row['route_url'])
-    if(row['route_id'][:3]== "5__"):
-        newRoute = ontology.MetroRoute(row['route_id'])
+    if(row['route_id'][:2]== "5_"):
+        newRoute = ontology.CercaniasRoute(row['route_id'])
         newRoute.hasName.append(row['route_long_name'])
         newRoute.hasUrl.append(row['route_url'])
-    if(row['route_id'][:3]== "6__"):
-        newRoute = ontology.MetroRoute(row['route_id'])
+    if(row['route_id'][:2]== "6_"):
+        newRoute = ontology.EMTBusRoute(row['route_id'])
         newRoute.hasName.append(row['route_long_name'])
         newRoute.hasUrl.append(row['route_url'])
-    if(row['route_id'][:3]== "8__"):
-        newRoute = ontology.MetroRoute(row['route_id'])
+    if(row['route_id'][:2]== "8_"):
+        newRoute = ontology.InterurbanBusRoute(row['route_id'])
         newRoute.hasName.append(row['route_long_name'])
         newRoute.hasUrl.append(row['route_url'])
-    if(row['route_id'][:3]== "9__"):
-        newRoute = ontology.MetroRoute(row['route_id'])
+    if(row['route_id'][:2]== "9_"):
+        newRoute = ontology.OtherUrbanRoute(row['route_id'])
         newRoute.hasName.append(row['route_long_name'])
         newRoute.hasUrl.append(row['route_url'])
-    if(row['route_id'][:3]== "10__"):
-        newRoute = ontology.MetroRoute(row['route_id'])
+    if(row['route_id'][:2]== "10_"):
+        newRoute = ontology.LightrailRoute(row['route_id'])
         newRoute.hasName.append(row['route_long_name'])
         newRoute.hasUrl.append(row['route_url'])
       
-print(list(default_world.sparql("""
-           SELECT ?x ?name ?url
-           { ?s rdfs:subClassOf* publicTransportMadrid:MetroRoute .
-             ?x rdf:type ?s;
-                  publicTransportMadrid:hasName ?name;
-                  publicTransportMadrid:hasUrl ?url  . FILTER (?name = 'Circular') }
-    """)))
 
-print(list(ontology.data_properties()))
+ontology.save(file = "D:/publicTransportMadrid_full.rdf")
