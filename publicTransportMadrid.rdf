@@ -155,7 +155,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#latitude">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Stop"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     </owl:DatatypeProperty>
     
 
@@ -164,7 +164,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#longitude">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#Stop"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     </owl:DatatypeProperty>
     
 
