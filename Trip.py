@@ -13,7 +13,7 @@ trip_data = pd.read_csv("D:/publicTransport/data/google_transit_M4/trips.txt")
 def trip_populate(data):
 
     for index, row in data.iterrows():
-        newTrip = ontology.Trip(row['trip_id'])
+        newTrip = namespace.Trip(row['trip_id'])
         newTrip.hasName.append(row['trip_short_name'])
         for i in namespace.Service.instances():
             parts = str(i).split(".")
