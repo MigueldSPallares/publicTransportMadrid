@@ -361,6 +361,34 @@
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No se sabe si es accesible en silla de ruedas.</rdfs:comment>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="http://vocab.gtfs.org/terms#ServiceM5_1">
+  <rdf:type rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <isAvailableAtDay rdf:resource="#Sunday"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5_I13</hasId>
+  <startService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-17</startService>
+  <endService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-17</endService>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://vocab.gtfs.org/terms#ServiceM5_2">
+  <rdf:type rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <isAvailableAtDay rdf:resource="#Saturday"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5_I12</hasId>
+  <startService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-17</startService>
+  <endService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-17</endService>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://vocab.gtfs.org/terms#ServiceM5_3">
+  <rdf:type rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <isAvailableAtDay rdf:resource="#Monday"/>
+  <isAvailableAtDay rdf:resource="#Tuesday"/>
+  <isAvailableAtDay rdf:resource="#Wednesday"/>
+  <isAvailableAtDay rdf:resource="#Thursday"/>
+  <isAvailableAtDay rdf:resource="#Friday"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5_I11</hasId>
+  <startService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-17</startService>
+  <endService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-17</endService>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#RouteM5_1">
   <rdf:type rdf:resource="#CercaniasRoute"/>
   <hasTransportMethod rdf:resource="#Rail"/>
@@ -439,34 +467,6 @@
   <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C10___</hasId>
   <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Villalba-Príncipe Pío-Atocha-Recoletos-Chamartín-Aeropuerto T4</hasName>
   <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__10___.aspx</hasUrl>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="http://vocab.gtfs.org/terms#ServiceM5_1">
-  <rdf:type rdf:resource="http://vocab.gtfs.org/terms#Service"/>
-  <isAvailableAtDay rdf:resource="#Sunday"/>
-  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5_I13</hasId>
-  <startService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-17</startService>
-  <endService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-17</endService>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="http://vocab.gtfs.org/terms#ServiceM5_2">
-  <rdf:type rdf:resource="http://vocab.gtfs.org/terms#Service"/>
-  <isAvailableAtDay rdf:resource="#Saturday"/>
-  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5_I12</hasId>
-  <startService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-17</startService>
-  <endService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-17</endService>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="http://vocab.gtfs.org/terms#ServiceM5_3">
-  <rdf:type rdf:resource="http://vocab.gtfs.org/terms#Service"/>
-  <isAvailableAtDay rdf:resource="#Monday"/>
-  <isAvailableAtDay rdf:resource="#Tuesday"/>
-  <isAvailableAtDay rdf:resource="#Wednesday"/>
-  <isAvailableAtDay rdf:resource="#Thursday"/>
-  <isAvailableAtDay rdf:resource="#Friday"/>
-  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5_I11</hasId>
-  <startService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-17</startService>
-  <endService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-17</endService>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StopM5_1">
