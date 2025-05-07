@@ -1,0 +1,1447 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus"
+         xmlns="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus#">
+
+<owl:Ontology rdf:about="http://www.semanticweb.org/miguel/ontologies/2025/2/publicTransportMadrid_Msus"/>
+
+<owl:ObjectProperty rdf:about="#hasTransportMethod">
+  <rdfs:domain rdf:resource="#Route"/>
+  <rdfs:range rdf:resource="#TransportMethod"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isAvailableAtDay">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <rdfs:range rdf:resource="#Day"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#performedAtRoute">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#Trip"/>
+  <rdfs:range rdf:resource="#Route"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica la ruta donde se realiza el viaje.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#performedByService">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#Trip"/>
+  <rdfs:range rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica el servicio que realiza el viaje.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#stopIsWheelchairAccesible">
+  <rdfs:domain rdf:resource="#Stop"/>
+  <rdfs:range rdf:resource="#WheelchairAccesibilityStatus"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica si la parada o el lugar es accesible a las personas con silla de ruedas.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#stopPerformedAt">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#StopTime"/>
+  <rdfs:range rdf:resource="#Stop"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica el lugar donde se realiza la parada.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#stopPerformedDuringTrip">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#StopTime"/>
+  <rdfs:range rdf:resource="http://vocab.gtfs.org/terms#Trip"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica en qué viaje se realizó la parada.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tripIsWheelchairAccesible">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#Trip"/>
+  <rdfs:range rdf:resource="#WheelchairAccesibilityStatus"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#arrivalTime">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#StopTime"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica la hora de llegada de un vehículo a una estación</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#departureTime">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#StopTime"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#endService">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica la fecha de fin de un servicio</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasDescription">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica la descripción de una fecha</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasId">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasName">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">indica el nombre que tiene una clase.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasUrl">
+  <rdfs:domain rdf:resource="#Route"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica la página web de la ruta.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#latitude">
+  <rdfs:domain rdf:resource="#Stop"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica el punto de latitud de un lugar.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#longitude">
+  <rdfs:domain rdf:resource="#Stop"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica el punto de longitud de un lugar.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#serviceExceptionAvailableAt">
+  <rdfs:subPropertyOf rdf:resource="#serviceHasExceptionAt"/>
+  <owl:propertyDisjointWith rdf:resource="#serviceExceptionNotAvailableAt"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica la fecha de excepción del horario habitual del servicio donde éste está disponible.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#serviceHasExceptionAt">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica la fecha de excepción del horario habitual de un servicio.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#serviceExceptionNotAvailableAt">
+  <rdfs:subPropertyOf rdf:resource="#serviceHasExceptionAt"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica la fecha de excepción del horario habitual del servicio donde éste no está disponible.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#startService">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica la fecha de inicio de un servicio</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#stopSequence">
+  <rdfs:domain rdf:resource="http://vocab.gtfs.org/terms#StopTime"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica el orden de las paradas realizadas en un viaje.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Route">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ruta por donde pasan los vehículos.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#TransportMethod">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Bus"/>
+        <rdf:Description rdf:about="#Lightrail"/>
+        <rdf:Description rdf:about="#Metro"/>
+        <rdf:Description rdf:about="#Rail"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="http://vocab.gtfs.org/terms#Service">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isAvailableAtDay"/>
+      <owl:onClass rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Conjunto de fechas (en concreto los días de las semanas y los días de excepción) el servicio está disponible para una o más rutas</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Day">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Friday"/>
+        <rdf:Description rdf:about="#Monday"/>
+        <rdf:Description rdf:about="#Saturday"/>
+        <rdf:Description rdf:about="#Sunday"/>
+        <rdf:Description rdf:about="#Thursday"/>
+        <rdf:Description rdf:about="#Tuesday"/>
+        <rdf:Description rdf:about="#Wednesday"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="http://vocab.gtfs.org/terms#Trip">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#performedAtRoute"/>
+      <owl:onClass rdf:resource="#Route"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#performedByService"/>
+      <owl:onClass rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">El viaje que realiza un vehículo de transporte público.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Stop">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Parada que un vehículo puede tomar.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#WheelchairAccesibilityStatus">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#IsNotWheelchairAccesible"/>
+        <rdf:Description rdf:about="#IsWheelchairAccesible"/>
+        <rdf:Description rdf:about="#WheelchairAccesibilityUnknown"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica si un viaje o parada es accesible para las personas en silla de ruedas</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="http://vocab.gtfs.org/terms#StopTime">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#stopPerformedAt"/>
+      <owl:onClass rdf:resource="#Stop"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#stopPerformedDuringTrip"/>
+      <owl:onClass rdf:resource="http://vocab.gtfs.org/terms#Trip"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hora en la que un vehículo llega y sale de una parada durante un viaje concreto.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#BoardingArea">
+  <rdfs:subClassOf rdf:resource="#Stop"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">El lugar donde se para el vehículo es una zona de embarcación.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#BusRoute">
+  <rdfs:subClassOf rdf:resource="#Route"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">La ruta es utilizada por autobuses.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#CercaniasRoute">
+  <rdfs:subClassOf rdf:resource="#Route"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica las rutas que emplean el servicio ferroviario de Cercanías.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#EMTBusRoute">
+  <rdfs:subClassOf rdf:resource="#BusRoute"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica las rutas que utilizan los autobuses EMT</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Entrance_Exit">
+  <rdfs:subClassOf rdf:resource="#Stop"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">La parada es la entrada o salida de un vehículo.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#GenericNode">
+  <rdfs:subClassOf rdf:resource="#Stop"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">El lugar donde se para el vehículo es una ubicación dentro de una estación.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#InterurbanBusRoute">
+  <rdfs:subClassOf rdf:resource="#BusRoute"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica las rutas utilizadas por los autobuses interurbanos.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#LightrailRoute">
+  <rdfs:subClassOf rdf:resource="#Route"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica las rutas utilizadas por el metro ligero o tranvía.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#MetroRoute">
+  <rdfs:subClassOf rdf:resource="#Route"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica las rutas empleadas por el Metro de Madrid.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#NormalStop">
+  <rdfs:subClassOf rdf:resource="#Stop"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">El lugar de parada es una parada normal</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Station">
+  <rdfs:subClassOf rdf:resource="#Stop"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">La parada es una estación</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#UrbanBusRoute">
+  <rdfs:subClassOf rdf:resource="#BusRoute"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indica las rutas utilizadas por los autobuses urbanos no gestionados por EMT.</rdfs:comment>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#Bus">
+  <rdf:type rdf:resource="#TransportMethod"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bus</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Lightrail">
+  <rdf:type rdf:resource="#TransportMethod"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lightrail</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Metro">
+  <rdf:type rdf:resource="#TransportMethod"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Metro</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Rail">
+  <rdf:type rdf:resource="#TransportMethod"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rail</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Friday">
+  <rdf:type rdf:resource="#Day"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Friday</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Monday">
+  <rdf:type rdf:resource="#Day"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monday</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Saturday">
+  <rdf:type rdf:resource="#Day"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Saturday</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Sunday">
+  <rdf:type rdf:resource="#Day"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sunday</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Thursday">
+  <rdf:type rdf:resource="#Day"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thursday</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Tuesday">
+  <rdf:type rdf:resource="#Day"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tuesday</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Wednesday">
+  <rdf:type rdf:resource="#Day"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wednesday</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IsNotWheelchairAccesible">
+  <rdf:type rdf:resource="#WheelchairAccesibilityStatus"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">It is not wheelchair accesible</hasName>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">El viaje o parada no es accesible en silla de ruedas.</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IsWheelchairAccesible">
+  <rdf:type rdf:resource="#WheelchairAccesibilityStatus"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">It is accesible</hasName>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">El viaje o parada es accesible en silla de ruedas.</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WheelchairAccesibilityUnknown">
+  <rdf:type rdf:resource="#WheelchairAccesibilityStatus"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">It is unknown</hasName>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No se sabe si es accesible en silla de ruedas.</rdfs:comment>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RouteM5_1">
+  <rdf:type rdf:resource="#CercaniasRoute"/>
+  <hasTransportMethod rdf:resource="#Rail"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C1___</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Príncipe Pío-Atocha-Recoletos-Chamartín-Aeropuerto T4</hasName>
+  <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__1___.aspx</hasUrl>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RouteM5_2">
+  <rdf:type rdf:resource="#CercaniasRoute"/>
+  <hasTransportMethod rdf:resource="#Rail"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C2___</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Guadalajara-Alcalá de Henares-Atocha-Chamartín</hasName>
+  <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__2___.aspx</hasUrl>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RouteM5_3">
+  <rdf:type rdf:resource="#CercaniasRoute"/>
+  <hasTransportMethod rdf:resource="#Rail"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C3___</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aranjuez-Atocha-Sol-Chamartín</hasName>
+  <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__3___.aspx</hasUrl>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RouteM5_4">
+  <rdf:type rdf:resource="#CercaniasRoute"/>
+  <hasTransportMethod rdf:resource="#Rail"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C4_A__</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Parla-Atocha-Sol-Chamartín-Cantoblanco-Alcobendas S.Sebastián de los Reyes</hasName>
+  <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__4_A__.aspx</hasUrl>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RouteM5_5">
+  <rdf:type rdf:resource="#CercaniasRoute"/>
+  <hasTransportMethod rdf:resource="#Rail"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C4_B__</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Parla-Atocha-Sol-Chamartín-Cantoblanco-Colmenar Viejo</hasName>
+  <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__4_B__.aspx</hasUrl>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RouteM5_6">
+  <rdf:type rdf:resource="#CercaniasRoute"/>
+  <hasTransportMethod rdf:resource="#Rail"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C5___</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Móstoles El Soto-Atocha-Fuenlabrada-Humanes</hasName>
+  <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__5___.aspx</hasUrl>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RouteM5_7">
+  <rdf:type rdf:resource="#CercaniasRoute"/>
+  <hasTransportMethod rdf:resource="#Rail"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C7___</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alcalá de Henares-Atocha-Chamartín-P.Pío</hasName>
+  <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__7___.aspx</hasUrl>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RouteM5_8">
+  <rdf:type rdf:resource="#CercaniasRoute"/>
+  <hasTransportMethod rdf:resource="#Rail"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C8___</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Guadalajara-Alcalá de Henares-Atocha-Chamartín-Villalba-Cercedilla</hasName>
+  <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__8___.aspx</hasUrl>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RouteM5_9">
+  <rdf:type rdf:resource="#CercaniasRoute"/>
+  <hasTransportMethod rdf:resource="#Rail"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C9___</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cercedilla-Cotos</hasName>
+  <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__9___.aspx</hasUrl>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RouteM5_10">
+  <rdf:type rdf:resource="#CercaniasRoute"/>
+  <hasTransportMethod rdf:resource="#Rail"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5__C10___</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Villalba-Príncipe Pío-Atocha-Recoletos-Chamartín-Aeropuerto T4</hasName>
+  <hasUrl rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.crtm.es/5__10___.aspx</hasUrl>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://vocab.gtfs.org/terms#ServiceM5_1">
+  <rdf:type rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <isAvailableAtDay rdf:resource="#Sunday"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5_I13</hasId>
+  <startService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-17</startService>
+  <endService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-17</endService>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://vocab.gtfs.org/terms#ServiceM5_2">
+  <rdf:type rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <isAvailableAtDay rdf:resource="#Saturday"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5_I12</hasId>
+  <startService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-17</startService>
+  <endService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-17</endService>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="http://vocab.gtfs.org/terms#ServiceM5_3">
+  <rdf:type rdf:resource="http://vocab.gtfs.org/terms#Service"/>
+  <isAvailableAtDay rdf:resource="#Monday"/>
+  <isAvailableAtDay rdf:resource="#Tuesday"/>
+  <isAvailableAtDay rdf:resource="#Wednesday"/>
+  <isAvailableAtDay rdf:resource="#Thursday"/>
+  <isAvailableAtDay rdf:resource="#Friday"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5_I11</hasId>
+  <startService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-17</startService>
+  <endService rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-07-17</endService>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_1">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_11</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ATOCHA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de la Ciudad de Barcelona 2 B</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.40659</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.6893</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_2">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_133</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FUENTE DE LA MORA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Dulce Chacón 15</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.48475</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.66282</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_3">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_142</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AEROPUERTO T4</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ctra de Alcobendas a Barajas SN</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.49177</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.59333</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_4">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_144</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VALDEBEBAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de las Fuerzas Armadas 322</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.4823</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.61642</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_5">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_18</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CHAMARTÍN</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Agustín de Foxá 40</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.4721</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.68247</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_6">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_25</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DELICIAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Ramírez de Prado 3 B</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.40037</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.69277</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_7">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_46</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MÉNDEZ ÁLVARO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle del Ombu 16</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.39538</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.67808</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_8">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_51</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NUEVOS MINISTERIOS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Raimundo Fernández Villaverde 67</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.44662</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.69234</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_9">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_57</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PIRÁMIDES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo del Doctor Vallejo Nágera 37</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.4026</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.71134</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_10">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_61</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRÍNCIPE PÍO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de la Florida 2</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.42107</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.72026</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_11">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_65</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RECOLETOS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de Recoletos 20</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.42341</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.69086</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_12">
+  <rdf:type rdf:resource="#Station"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">est_90_13</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Méndez Álvaro Estación Sur</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle del Ombu 16</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.39538</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.67819</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_13">
+  <rdf:type rdf:resource="#Station"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">est_90_18</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intercambiador de Príncipe Pío</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de la Florida 2</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.42107</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.72037</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_14">
+  <rdf:type rdf:resource="#Station"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">est_90_25</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chamartín</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Agustín de Foxá 40</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.4721</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.68269</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_15">
+  <rdf:type rdf:resource="#Station"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">est_90_33</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aeropuerto T4</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ctra de Alcobendas a Barajas SN</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.49176</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.59356</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_16">
+  <rdf:type rdf:resource="#Station"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">est_90_54</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Atocha-Renfe</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de la Ciudad de Barcelona 2 B</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.40659</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.68944</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_17">
+  <rdf:type rdf:resource="#Station"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">est_90_71</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nuevos Ministerios</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Raimundo Fernández Villaverde 67</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.44662</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.69246</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_18">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_10</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ASAMBLEA DE MADRID-ENTREVÍAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle del Vizconde de Arlessón 45</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.38167</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.668</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_19">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_106</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GARENA LA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle   Fausto Elhuyar 6</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.48043</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.39317</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_20">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_12</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AZUQUECA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de la Estacion SN</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.56103</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.26546</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_21">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_143</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SOTO DEL HENARES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de la Democracia 17</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.46353</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.44134</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_22">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_2</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ALCALÁ DE HENARES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle   Pedro Lainez 2</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.48903</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.36634</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_23">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_22</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">COSLADA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Luis Braille 8</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.42374</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.56114</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_24">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_3</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ALCALÁ DE HENARES UNIVERSIDAD</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ctra del  Campus SN</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.50534</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.33541</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_25">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_38</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GUADALAJARA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plaza de la Estación SN</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.64408</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.18239</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_26">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_45</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MECO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Trva de la Calera 3</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.53462</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.29866</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_27">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_59</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">POZO EL</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de Entrevías 140</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.3759</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.65623</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_28">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_71</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SAN FERNANDO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle   Estación de ferrocarril 6</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.44266</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.53385</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_29">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_75</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SANTA EUGENIA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de Santa Eugenia 2</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.38699</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.60906</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_30">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_81</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TORREJÓN DE ARDOZ</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo   Estación 3</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.4546</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.47982</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_31">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_87</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VALLECAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de la Democracia 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.38221</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.62455</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_32">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_90</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VICÁLVARO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de San Cipriano 85</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.40132</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.59593</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_33">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_103</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CASAR EL</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda del Casar 2</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.31847</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.70984</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_34">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_122</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SOL</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plaza de la Puerta del Sol 6</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.41685</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.70309</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_35">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_19</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CIEMPOZUELOS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de San Juan de Dios 7</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.15906</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.61003</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_36">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_35</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GETAFE INDUSTRIAL</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de John Lennon 15400</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.30548</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.70769</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_37">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_56</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PINTO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle del Ferrocarril 4</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.24279</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.70374</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_38">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_69</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SAN CRISTÓBAL DE LOS ANGELES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Paterna 17</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.34236</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.68385</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_39">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_70</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SAN CRISTÓBAL INDUSTRIAL</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Acces a la Colonia Marconi 11</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.33191</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.69872</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_40">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_8</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ARANJUEZ</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de la Estación 5</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.03483</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.61831</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_41">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_86</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VALDEMORO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de la Estación 86</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.19604</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.66482</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_42">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_93</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VILLAVERDE BAJO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de la Estación 2</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.35264</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.68398</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_43">
+  <rdf:type rdf:resource="#Station"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">est_90_58</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Puerta del Sol</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plaza de la Puerta del Sol 6</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.41688</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.70331</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_44">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_15</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CANTOBLANCO UNIVERSIDAD</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Freud 3</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.54378</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.70034</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_45">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_31</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FUENCARRAL</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Antonio de Cabezón 10</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.50156</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.68234</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_46">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_34</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GETAFE CENTRO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle  Ferrocarril 2</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.3101</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.73394</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_47">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_36</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GETAFE SECTOR 3</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle del Cementerio Municipal SN</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.28824</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.73734</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_48">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_4</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ALCOBENDAS-S.S. DE LOS REYES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plaza de Francisco Casillas 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.54657</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.63519</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_49">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_43</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MARGARITAS-UNIVERSIDAD LAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle   Madrid 152</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.32304</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.72737</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_50">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_53</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PARLA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle  Real 81</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.24077</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.76936</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_51">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_84</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UNIVERSIDAD P. COMILLAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ctra del Goloso SN</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.55406</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.68334</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_52">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_85</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VALDELASFUENTES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle del Marqués de la Valdavia 140</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.54745</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.65434</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_53">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_92</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VILLAVERDE ALTO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle del Valle de Tobalina 56</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.34123</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.71193</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_54">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsNotWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_21</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">COLMENAR VIEJO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de la Doctora Nogales de la Morena SN</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.64497</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.77573</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_55">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_37</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GOLOSO EL</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ctra de Colmenar Viejo SN</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.55857</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.71407</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_56">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_83</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TRES CANTOS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plaza de la Estación 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.59844</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.71564</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_57">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_1</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ÁGUILAS LAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda del General Fanjul 110</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.38119</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.78027</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_58">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_104</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HUMANES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle   Cenicientos 26</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.25565</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.82847</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_59">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_105</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PARQUE POLVORANCA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle   Alcalde Francisco Moreno Menéndez 4</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.3125</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.78334</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_60">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_24</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CUATRO VIENTOS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de Extremadura 567 A</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.37771</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.79143</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_61">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_26</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DOCE DE OCTUBRE</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de Córdoba 39</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.37896</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.69861</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_62">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_28</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EMBAJADORES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gta de Embajadores 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.40513</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.70262</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_63">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_30</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FANJUL</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda del General Fanjul 27</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.38365</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.76856</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_64">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_32</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FUENLABRADA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plaza  Constitución 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.28268</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.79885</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_65">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_40</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LAGUNA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Cuart de Poblet 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.39918</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.74422</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_66">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_41</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGANES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle  Virgen del Camino 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.32899</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.77148</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_67">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_48</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MÓSTOLES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de la Estación 13</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.3285</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.86349</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_68">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_49</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MÓSTOLES EL SOTO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle   Granada 17</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.33089</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.88234</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_69">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_5</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ALCORCÓN</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de Móstoles 12</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.35008</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.83173</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_70">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_52</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ORCASITAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Campotejar 24</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.36691</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.70442</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_71">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_62</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PUENTE ALCOCER</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Alcocer 54</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.35028</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.70516</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_72">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_66</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RETAMAS LAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de Retamas 2</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.34189</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.84242</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_73">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_7</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ALUCHE</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Valmojado 293</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.38563</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.76074</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_74">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_72</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SAN JOSÉ DE VALDERAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Sahagún 36</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.35653</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.81588</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_75">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_77</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SERNA LA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle   Barcelona 28</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.29672</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.79248</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_76">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_95</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ZARZAQUEMADA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda   Europa 14</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.34085</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.7483</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_77">
+  <rdf:type rdf:resource="#Station"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">est_90_1</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aluche</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de Valmojado 293</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.38563</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.76085</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_78">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_13</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BARRIAL-C.COM.POZUELO EL</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Via   Ferrocarril SN</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.46537</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.80774</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_79">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_145</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MIRASIERRA-PACO DE LUCÍA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de la Costa Brava 14 B</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.49971</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.70918</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_80">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_42</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MAJADAHONDA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cmno   Estación del Plantío 6</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.47428</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.84534</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_81">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_58</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PITIS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ctra a la Estación de Pitis 19</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.4951</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.72584</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_82">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_60</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">POZUELO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle   Estación 2</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.44727</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.80012</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_83">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_64</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RAMÓN Y CAJAL</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de San Modesto 50</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.48824</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.69473</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_84">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_68</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ROZAS LAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de la Vía de Servicio de las Rozas 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.49423</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.86812</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_85">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_9</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ARAVACA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de la Golondrina 104</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.44833</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.78586</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_86">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_16</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CERCEDILLA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle del Cascajal 7</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.73757</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-4.0659</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_87">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_20</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">COLLADO MEDIANO</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paseo de los Rosales 47</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.69276</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-4.03587</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_88">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_33</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GALAPAGAR-LA NAVATA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ctra de Galapagar-La Navata 154</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.60011</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.98185</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_89">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_44</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MATAS LAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plaza del Ferrocarril 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.55252</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.89683</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_90">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_47</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MOLINOS LOS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gta de la Estación 2</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.70734</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-4.06681</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_91">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_50</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEGRALES LOS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avda de la Reina Victoria 47</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.63858</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-4.02189</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_92">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_55</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PINAR DE LAS ROZAS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lugar   Estación Ferrocarril El Pinar 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.5223</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.88216</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_93">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_6</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ALPEDRETE</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cmno de la Estación 36</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.65816</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-4.03506</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_94">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_82</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TORRELODONES</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plaza de Salvador Sánchez Frascuelo 6</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.57451</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.95654</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_95">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#IsWheelchairAccesible"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_91</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VILLALBA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plaza de la Estación 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.62637</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-4.0081</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_96">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_23</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">COTOS</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ctra   M-604 (de la A-1 al Puerto de Navacerrada) 1</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.82226</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.96452</longitude>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StopM5_97">
+  <rdf:type rdf:resource="#NormalStop"/>
+  <stopIsWheelchairAccesible rdf:resource="#WheelchairAccesibilityUnknown"/>
+  <hasId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">par_5_63</hasId>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PUERTO NAVACERRADA</hasName>
+  <hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Calle de la Virgen de las Nieves 7</hasDescription>
+  <latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">40.78441</latitude>
+  <longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-4.00473</longitude>
+</owl:NamedIndividual>
+
+<rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+
+<rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#time"/>
+
+
+</rdf:RDF>
