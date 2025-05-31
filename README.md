@@ -1,3 +1,3 @@
 # publicTransportMadrid
 
-Los archivos google_transit_M6 y google_transit_M89 deben ser decomprimidos.
+Para poder obtener el proyecto, descargad el archivo publicTransportCRTM_Msus.zip
